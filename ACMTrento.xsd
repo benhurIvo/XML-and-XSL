@@ -1,0 +1,73 @@
+<?xml version="1.0"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+<xs:schema version="1.0"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           elementFormDefault="qualified">
+
+    <xs:element name="TAXONOMY" type="TAXONOMY_type" />
+    
+    <xs:complexType name="TAXONOMY_type">
+        <xs:sequence>
+            <xs:element name="AREA" type="AREA_type" maxOccurs="unbounded" />
+        </xs:sequence>
+        <xs:attribute name="ID" type="xs:string"/>
+    </xs:complexType>
+    
+    
+    <xs:complexType name="AREA_type">
+        <xs:sequence>
+            <xs:element name="AREA_NAME" type="xs:string" />
+            <xs:element name="SHORT_NAME" type="short_name" />
+            <xs:element name="DESCRIPTION" type="xs:string" />
+            <xs:element name="UNITS" type="UNITS_type" />
+        </xs:sequence>
+        <xs:attribute name="ID" type="xs:string"/>
+    </xs:complexType>
+
+    <xs:complexType name="UNITS_type">
+        <xs:sequence>
+            <xs:element name="UNIT" type="UNIT_type" maxOccurs = 'unbounded'/>
+        </xs:sequence>
+    </xs:complexType>
+
+
+    <xs:complexType name="UNIT_type">
+        <xs:all>
+            <xs:element name="UNIT_NAME" type="xs:string" />
+            <xs:element name="SHORT_NAME" type="short_name" />
+            <xs:element name="TIME" type="xs:string" />
+            <xs:element name="TOPICS" type="TOPICS_type" />
+            <xs:element name="LEARNING_OBJECTIVES" type="LEARNING_OBJECTIVES_type" />
+        </xs:all>
+        <xs:attribute name="ID" type="xs:string"/>
+        <xs:attribute name="TYPE" type="xs:string"/>
+    </xs:complexType>
+
+
+    <xs:complexType name="short_name">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">          
+                <xs:attribute name="SOURCE" type="xs:string"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType> 
+
+    <xs:complexType name="TOPICS_type">
+        <xs:sequence>
+            <xs:element name="TOPIC" type="xs:string" maxOccurs = 'unbounded'/>
+        </xs:sequence>
+    </xs:complexType> 	
+  
+    <xs:complexType name="LEARNING_OBJECTIVES_type">
+        <xs:sequence>
+            <xs:element name="OBJECTIVE" type="xs:string" maxOccurs = 'unbounded'/>
+        </xs:sequence>
+    </xs:complexType> 
+  
+</xs:schema>
+
